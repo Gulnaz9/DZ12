@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -66,6 +67,7 @@ namespace DZ12
             Thread th3 = new Thread(ThirdTh);
             th3.Start();
 
+
             Console.Clear();//попытка почистить экран от предыдущего задания
             Console.WriteLine("Упр 2, факторал и квадрат числа в разных потоках");
             Console.WriteLine("Введите целое число");
@@ -79,6 +81,14 @@ namespace DZ12
             catch (Exception)
             {
                 Console.WriteLine("Вы ввели что-то не то(");
+            }
+
+            Console.WriteLine("Упр 3, вернуть все найденные имена методов объекта");
+            Refl reflObj = new Refl();
+            MethodInfo[] methods = reflObj.GetType().GetMethods();
+            foreach (MethodInfo method in methods)
+            {
+                Console.WriteLine(method.Name);
             }
         }
     }
